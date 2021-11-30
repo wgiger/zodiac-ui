@@ -1,0 +1,21 @@
+<form class="price-form" [formGroup]="pricesForm">
+    <mat-label>Buy Price</mat-label>
+    <mat-form-field appearance="outline">
+        <mat-label>Buy Price</mat-label>
+        <input matInput [(ngModel)]="buyPrice" type="number" formControlName="buyPrice">
+        <span matPrefix>$&nbsp;</span>
+        <mat-error *ngIf="pricesForm.controls.buyPrice.errors?.priceError">
+            <p>Sell Price must be higher than Buy price</p>
+        </mat-error>
+    </mat-form-field>
+    <mat-label>Sell Price</mat-label>
+    <mat-form-field appearance="outline" >
+        <mat-label>Sell Price</mat-label>
+        <input matInput [(ngModel)]="sellPrice" type="number" formControlName="sellPrice">
+        <span matPrefix>$&nbsp;</span>
+        <mat-error *ngIf="pricesForm.controls.sellPrice.errors?.priceError">
+            <p>Sell Price must be higher than Buy price</p>
+        </mat-error>
+    </mat-form-field>
+    <button mat-raised-button [disabled]="!pricesForm.valid" (click)="onSubmit()" color="primary">Submit</button>
+</form>
